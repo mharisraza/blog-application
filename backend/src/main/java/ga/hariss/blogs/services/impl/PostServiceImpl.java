@@ -12,6 +12,7 @@ import ga.hariss.blogs.entities.Category;
 import ga.hariss.blogs.entities.Post;
 import ga.hariss.blogs.entities.User;
 import ga.hariss.blogs.exceptions.ResourceNotFound;
+import ga.hariss.blogs.helper.Constant;
 import ga.hariss.blogs.payloads.PostDto;
 import ga.hariss.blogs.repositories.CategoryRepository;
 import ga.hariss.blogs.repositories.PostRepository;
@@ -41,7 +42,7 @@ public class PostServiceImpl implements PostService {
 				.orElseThrow(() -> new ResourceNotFound("Category", categoryId));
 
 		Post post = this.mapper.map(postDto, Post.class);
-		post.setImageName("default.jpg");
+		post.setImageName(Constant.DEFAULT_BLOG_IMAGE);
 		post.setDate(new Date());
 		post.setUser(user);
 		post.setCategory(category);

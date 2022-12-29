@@ -3,6 +3,7 @@ package ga.hariss.blogs.payloads;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import ga.hariss.blogs.helper.Constant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,11 +18,11 @@ public class UserDto {
 	@NotBlank
 	private String name;
 
-	@Pattern(regexp = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(gmail|duck|outlook|yahoo)\\.com$", message = "Invalid or Temporay Email Address isn't allowed.")
+	@Pattern(regexp = Constant.EMAIL_REGEX_PATTERN, message = Constant.INVALID_EMAIL_MESSAGE)
 	@NotBlank
 	private String email;
 
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$", message = "Contains atleast 8 char, 1 Special symbol, one lower case, one upper case.")
+	@Pattern(regexp = Constant.PASSWORD_REGEX_PATTERN, message = Constant.INVALID_PASSWORD_MESSAGE)
 	@NotBlank
 	private String password;
 

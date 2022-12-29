@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import ga.hariss.blogs.helper.Constant;
+
 
 @SpringBootApplication
 @ComponentScan(basePackages = "ga.hariss.blogs.*")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = Constant.CROSS_ORIGIN)
 public class BlogApplication {
 
 	public static void main(String[] args) {
