@@ -13,16 +13,18 @@ import ga.hariss.blogs.repositories.UserRepository;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
+
 	@Autowired
 	private UserRepository userRepo;
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		User user = this.userRepo.findByEmail(username)
 				.orElseThrow(() -> new ResourceNotFound("User", "email: " + username));
 
-		return new CustomUserDetails(user);
+		return new CustomUserDetails(user); 
 	}
+	
 
 }
