@@ -25,5 +25,7 @@ public class UserDto {
 	@Pattern(regexp = Constant.PASSWORD_REGEX_PATTERN, message = Constant.INVALID_PASSWORD_MESSAGE)
 	@NotBlank
 	private String password;
+	
+	private boolean isEnable;
 
 }
