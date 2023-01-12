@@ -12,3 +12,5 @@ const Base=({title="Blog Application", children})=> {
     );
 
 }
+
+export default Base;
