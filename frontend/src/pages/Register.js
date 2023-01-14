@@ -17,6 +17,8 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { doRegister } from "../services/user-service";
 import { USER_ALREADY_EXIST_REGISTER_ERROR } from "../services/helper";
+import { Navigate, NavLink as ReactLink } from "react-router-dom";
+
 
 // validator.
 const validate = (data) => {
@@ -26,11 +28,11 @@ const validate = (data) => {
       if (data[field] === "") {
           errors[field] = "This field is required";
       }
-      if (field === 'confirmPassword' && !data.password.match(data.confirmPassword)) {
-          errors[field] = 'Password and Confirm Password do not match';
-      }
+      if (field === 'confirmPassword' && data.password !== data.confirmPassword) {
+        errors[field] = 'Password and Confirm Password do not match';
+    }
 
-      if (field === 'password' && !(data.password.length >= 8 && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).*$/.test(data.password))) {
+      if (field === 'password' && data[field]!== '' && !(data.password.length >= 8 && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).*$/.test(data.password))) {
         errors[field] = 'Password should be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character';
     }
 
@@ -57,7 +59,6 @@ const Register = () => {
     setData({ ...data, [field]: event.target.value });
 };
 
-
   // submiting the form......
   const submitForm = (event) => {
     event.preventDefault();
@@ -75,33 +76,28 @@ const Register = () => {
     // calling server apis.
     doRegister(data)
       .then((response) => {
-        toast.success("Register successfully, you can login now!").then(() => {
-          window.location("/login");
-
-          // setting data to blank after successfully registration.
-
-          setData({
-            name: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
-
-          });
-
+        toast.success("Register successfully, you can login now!");
+        setData({
+          name: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
         });
+        setError({errors:{},
+        isError: false});
+         // return to login page.
+        return <Navigate to={"/login"} />;
       })
       .catch((error) => {
-        if (error.response.data.message == USER_ALREADY_EXIST_REGISTER_ERROR) {
+        if (error?.response?.data?.message == USER_ALREADY_EXIST_REGISTER_ERROR) {
           toast.error("Sorry, an user already exist with provided email.");
         }
-
         setError(prevError => ({
           ...prevError,
           errors: errors,
           isError: true
       }));
-
-        console.log(error);
+       toast.error("Sorry an Unexpected error occured, try again in a while.");
       });
   };
 
@@ -212,7 +208,8 @@ const Register = () => {
             </Card>
 
             <p className="text-center mt-3">
-              Already have an account? Login now.
+              Already have an account?&nbsp;&nbsp;
+              <Button tag={ReactLink} to="/login" color="danger">Login Now</Button>
             </p>
           </Col>
         </Row>

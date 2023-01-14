@@ -6,5 +6,6 @@ export const apiCaller = axios.create({
 });
 
 
-export const SOMETHING_WENT_WRONG_ERROR = "0x01";
-export const USER_ALREADY_EXIST_REGISTER_ERROR = "0x02";
+export const SOMETHING_WENT_WRONG_ERROR = "ERROR_CODE: 0x01";
+export const USER_ALREADY_EXIST_REGISTER_ERROR = "ERROR_CODE: 0x02";
+export const INVALID_PASSWORD = "ERROR_CODE: 0x03";

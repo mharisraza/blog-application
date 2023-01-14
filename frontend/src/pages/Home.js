@@ -1,6 +1,7 @@
 import Base from "../components/Base";
 import Header from "../components/Header";
 import React from 'react';
+import { NavLink as ReactLink } from "react-router-dom";
 import {
   Container,
   Row,
@@ -30,7 +31,7 @@ const Home = () => {
                 perspectives.
               </p>
               <p className="lead">
-                <Button onClick={()=> window.location="/register"} style={{backgroundColor: '#3f51b5'}} className="mt-3 px-4 p-3">Register Now</Button>
+                <Button tag={ReactLink} to="/register" style={{backgroundColor: '#3f51b5'}} className="mt-3 px-4 p-3">Register Now</Button>
               </p>
             </Col>
           </Row>
