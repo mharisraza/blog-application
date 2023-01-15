@@ -1,4 +1,4 @@
-import Base from "../components/Base";
+import Base from "../subComponents/Base";
 import {
     Button,
     Card,
@@ -93,8 +93,7 @@ const Login = () => {
               <Col sm={{ size: 6, offset: 3 }}>
                 <Card className="shadow">
                   <CardHeader
-                    style={{ backgroundColor: "#3f51b5" }}
-                    className="register-header text-center text-white   fw-bold"
+                    className="register-header bg-primary text-center text-white font-weight-bold"
                   >
                     <i class="fa fa-user-plus"></i>&nbsp;LOGIN
                   </CardHeader>
@@ -102,7 +101,8 @@ const Login = () => {
                     <Form onSubmit={submitForm}>
                       {/* Email Field */}
     
-                      <FormGroup floating>
+                      <FormGroup>
+                      <Label for="email">Email Address</Label>
                         <Input
                           id="email"
                           name="email"
@@ -112,7 +112,7 @@ const Login = () => {
                           value={data.email}
                           invalid = { error?.errors?.email }
                         />
-                        <Label for="email">Email Address</Label>
+  
     
                         <FormFeedback>
                           Email Address is required.
@@ -121,7 +121,8 @@ const Login = () => {
     
                       {/* Password Field */}
     
-                      <FormGroup floating>
+                      <FormGroup>
+                      <Label for="password">Password</Label>
                         <Input
                           id="password"
                           name="password"
@@ -131,7 +132,7 @@ const Login = () => {
                           value={data.password}
                           invalid = { error?.errors?.password }
                         />
-                        <Label for="password">Password</Label>
+          
     
                         <FormFeedback>
                             Password is required.
@@ -141,7 +142,7 @@ const Login = () => {
                       <Container className="text-center">
                         <Button
                           type="submit"
-                          style={{ backgroundColor: "#3f51b5" }}
+                          color="success"
                           className="w-100"
                         >
                           Login <i class="fa-solid fa-right-to-bracket"></i>

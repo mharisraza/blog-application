@@ -1,4 +1,4 @@
-import Base from "../components/Base";
+import Base from "../subComponents/Base";
 import {
   Button,
   Card,
@@ -105,30 +105,30 @@ const Register = () => {
     <Base>
       <ToastContainer />
 
-      <Container className="mt-50">
+      <Container className="mt-5">
         <Row>
           <Col sm={{ size: 6, offset: 3 }}>
             <Card className="shadow">
               <CardHeader
-                style={{ backgroundColor: "#3f51b5" }}
-                className="register-header text-center text-white   fw-bold"
+                className="register-header bg-primary text-center text-white   font-weight-bold"
               >
                 <i class="fa fa-user-plus"></i>&nbsp;REGISTER
               </CardHeader>
               <CardBody>
                 <Form onSubmit={submitForm}>
                   {/* Full Name Field */}
-                  <FormGroup floating>
+                  <FormGroup>
+                  <Label for="fullName">&nbsp;Full Name</Label>
                     <Input
                       id="fullName"
                       name="name"
-                      placeholder="Full Name"
+                      placeholder="John Doe"
                       type="text"
                       onChange={(e) => handleChange(e, "name")}
                       value={data.name}
                       invalid = { error?.errors?.name }
                     />
-                    <Label for="fullName">Full Name</Label>
+           
                     <FormFeedback>
                       Full Name is required.
                     </FormFeedback>
@@ -138,17 +138,17 @@ const Register = () => {
 
                   {/* Email Field */}
 
-                  <FormGroup floating>
+                  <FormGroup>
+                  <Label for="email">Email Address</Label>
                     <Input
                       id="email"
                       name="email"
-                      placeholder="Email Address"
+                      placeholder="johndoe@example.com"
                       type="email"
                       onChange={(e) => handleChange(e, "email")}
                       value={data.email}
                       invalid = { error?.errors?.email }
                     />
-                    <Label for="email">Email Address</Label>
 
                     <FormFeedback>
                       Email Address is required.
@@ -157,7 +157,8 @@ const Register = () => {
 
                   {/* Password Field */}
 
-                  <FormGroup floating>
+                  <FormGroup>
+                  <Label for="password">Password</Label>
                     <Input
                       id="password"
                       name="password"
@@ -167,7 +168,7 @@ const Register = () => {
                       value={data.password}
                       invalid = { error?.errors?.password }
                     />
-                    <Label for="password">Password</Label>
+                   
 
                     <FormFeedback>
                     {error?.errors?.password}
@@ -176,7 +177,8 @@ const Register = () => {
 
                   {/* Confirm Password Field */}
 
-                  <FormGroup floating>
+                  <FormGroup>
+                  <Label for="confirm_password">Confirm Password</Label>
                     <Input
                       id="confirm_password"
                       name="confirmPassword"
@@ -186,7 +188,6 @@ const Register = () => {
                       value={data.confirmPassword}
                       invalid = {error?.errors?.confirmPassword}
                     />
-                    <Label for="confirm_password">Confirm Password</Label>
 
                     <FormFeedback>
                     {error?.errors?.confirmPassword}
@@ -195,9 +196,8 @@ const Register = () => {
                   </FormGroup>
 
                   <Container className="text-center">
-                    <Button
+                    <Button color="success"
                       type="submit"
-                      style={{ backgroundColor: "#3f51b5" }}
                       className="w-100"
                     >
                       Register <i class="fa-solid fa-right-to-bracket"></i>

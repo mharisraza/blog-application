@@ -1,5 +1,5 @@
-import Base from "../components/Base";
-import Header from "../components/Header";
+import Base from "../subComponents/Base";
+import Header from "../subComponents/Header";
 import React from 'react';
 import { NavLink as ReactLink } from "react-router-dom";
 import {
@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <Base>
     <div className="container mt-5 mx-auto ml-3 right">
-      <div className="p-5 mb-4 bg-light rounded-3">
+      <div>
         <Container className=" py-3">
           <Row>
             <Col>
@@ -31,7 +31,7 @@ const Home = () => {
                 perspectives.
               </p>
               <p className="lead">
-                <Button tag={ReactLink} to="/register" style={{backgroundColor: '#3f51b5'}} className="mt-3 px-4 p-3">Register Now</Button>
+                <Button tag={ReactLink} to="/register" size="lg" className="btn btn-success">Register Now</Button>
               </p>
             </Col>
           </Row>
