@@ -1,4 +1,4 @@
-import Base from "../subComponents/Base";
+import Base from "../components/Base";
 import {
   Button,
   Card,
@@ -17,7 +17,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { doRegister } from "../services/user-service";
 import { USER_ALREADY_EXIST_REGISTER_ERROR } from "../services/helper";
-import { Navigate, NavLink as ReactLink } from "react-router-dom";
+import { Navigate, NavLink as ReactLink, useNavigate } from "react-router-dom";
 
 
 // validator.
@@ -41,6 +41,8 @@ const validate = (data) => {
 }
 
 const Register = () => {
+
+  const navigate = useNavigate();
 
   const [data, setData] = useState({
     name: "",
@@ -85,8 +87,10 @@ const Register = () => {
         });
         setError({errors:{},
         isError: false});
-         // return to login page.
-        return <Navigate to={"/login"} />;
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+         return;
       })
       .catch((error) => {
         if (error?.response?.data?.message == USER_ALREADY_EXIST_REGISTER_ERROR) {

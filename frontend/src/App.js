@@ -5,7 +5,6 @@ import Register from "./pages/Register";
 import MainUserRoute from "./privatePages/normalUser/User";
 import UserDashboard from "./privatePages/normalUser/UserDashboard";
 
-import "./style/main.css";
 
 function App() {
   return (

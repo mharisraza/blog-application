@@ -1,4 +1,4 @@
-import Base from "../subComponents/Base";
+import Base from "../components/Base";
 import {
     Button,
     Card,
@@ -16,7 +16,7 @@ import {
   } from "reactstrap";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
-import { NavLink as ReactLink } from "react-router-dom";
+import { NavLink as ReactLink, useNavigate } from "react-router-dom";
 import { doLogin } from "../services/user-service";
 import { INVALID_PASSWORD } from "../services/helper";
 import { doLoginAfterGettingToken } from "../auth/login";
@@ -35,6 +35,8 @@ const validator=(data) => {
 
 
 const Login = () => {
+
+  const navigate = useNavigate();
 
     const [data, setData] = useState({
         email: '',
@@ -73,10 +75,13 @@ const Login = () => {
             // save the token to localStorage.
             doLoginAfterGettingToken(response, ()=> {
                      toast.success("Login successfully!");
+                     navigate("/user/dashboard");
+                     return;
             })
 
         }).catch((error)=> {
                 console.log(error);
+                toast.error("Sorry an unexpected error occured, try again in a while.");
         });
     }
 

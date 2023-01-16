@@ -1,5 +1,5 @@
-import Base from "../subComponents/Base";
-import Header from "../subComponents/Header";
+import Base from "../components/Base";
+import Header from "../components/Header";
 import React from 'react';
 import { NavLink as ReactLink } from "react-router-dom";
 import {
