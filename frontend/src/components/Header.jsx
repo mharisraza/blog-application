@@ -22,10 +22,6 @@ import {
 import { getUser, isLoggedIn } from "../auth/login";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState(undefined);
 

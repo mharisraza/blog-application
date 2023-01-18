@@ -23,7 +23,7 @@ const UserDashboard = () => {
                        <p>
                        With Blogit, you can write, publish, and share your own blog posts, connect with other writers, and discover new ideas and perspectives.
                        </p>
-                       <Button color="primary">Add new blog</Button>
+                       <Button tag={ReactLink} to="/user/add-blog" color="primary">Add new blog</Button>
                  </div>
               </div>
         </div>
